@@ -57,11 +57,7 @@ def index(request):
 
         info['poster']= poster
         
-        
-        
         return render(request, 'movie_info/movie.html',info)
-
-
-
+        
     return render(request, 'movie_info/index.html')
 
