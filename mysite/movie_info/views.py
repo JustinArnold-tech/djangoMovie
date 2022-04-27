@@ -4,15 +4,10 @@ import requests
 
 APIKEY = 'e9ee25ea'
 POSTER_KEY = 'k_36k6exf5'
-# def movie(request):
-#     movie_ = request.POST['movie']
-#     return movie_
-
-
 
 
 def index(request):
-    results = []
+    
     if request.method == 'POST':
 
         data_URL = f'http://www.omdbapi.com/?apikey={APIKEY}'
@@ -27,7 +22,7 @@ def index(request):
 
         try:
             response = requests.get(data_URL,params=params).json()
-            # print(response)
+            
         except Exception as e:
             raise e
         
@@ -69,4 +64,4 @@ def index(request):
 
 
     return render(request, 'movie_info/index.html')
-# Create your views here.
+
