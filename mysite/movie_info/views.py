@@ -12,14 +12,14 @@ POSTER_KEY = 'k_36k6exf5'
 
 
 def index(request):
-
+    results = []
     if request.method == 'POST':
 
         data_URL = f'http://www.omdbapi.com/?apikey={APIKEY}'
         year = ''
-        # movie = movie()
+        movie = request.POST['movie']
         params = {
-            't':request.response,
+            't':movie,
             'type':'movie',
             'y':year,
             'plot':'full'
@@ -27,10 +27,10 @@ def index(request):
 
         try:
             response = requests.get(data_URL,params=params).json()
+            # print(response)
         except Exception as e:
             raise e
         
-
         Title = response['Title']
         released = response['Released']
         Rating = response['Rated']
@@ -58,9 +58,13 @@ def index(request):
         except Exception as e:
             raise e
 
-        
         poster = poster_info['posters'][0]['link']
-        return render('movie_info/movie.html', poster=poster, **info)
+
+        info['poster']= poster
+        
+        
+        
+        return render(request, 'movie_info/movie.html',info)
 
 
 
