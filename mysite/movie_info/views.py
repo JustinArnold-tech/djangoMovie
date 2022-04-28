@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import requests
 
-APIKEY = 'e9ee25ea'
-POSTER_KEY = 'k_36k6exf5'
+APIKEY = ''
+POSTER_KEY = ''
 
 
 def index(request):
